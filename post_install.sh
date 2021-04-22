@@ -4,8 +4,7 @@
 pw useradd flexget -s /bin/csh -m
 
 # Install flexget
-su flexget
-: ${flexget_venv_dir="$HOME/flexget"}
+: ${flexget_venv_dir="/home/flexget/flexget"}
 python3.7 -m venv $flexget_venv_dir
 cd $flexget_venv_dir
 bin/pip install flexget
@@ -41,15 +40,16 @@ if "${use_xmpp}"; then
 fi
 
 # Configure flexget
-: ${flexget_config_dir="$HOME/.config/flexget"}
-mkdir -p $flexget_config_dir
-echo "@reboot $flexget_venv_dir/bin/flexget daemon start -d" | crontab -
-
+echo "@reboot $flexget_venv_dir/bin/flexget daemon start -d" | crontab -u flexget -
 : ${flexget_webui_password="Flex#get123"}
 $flexget_venv_dir/bin/flexget web passwd $flexget_webui_password
+chmod -R flexget:flexget /home/flexget/.config/flexget
+chmod -R flexget:flexget /home/flexget/flexget
 
 # Start flexget daemon
-$flexget_venv_dir/bin/flexget daemon start -d
+su - flexget <<EOF
+/home/flexget/flexget/bin/flexget daemon start -d
+EOF
 
 # Success messages
 echo "✅ flexget installation is complete!" > /root/PLUGIN_INFO
