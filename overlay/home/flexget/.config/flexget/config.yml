@@ -1,5 +1,6 @@
 # https://flexget.com/Configuration
 web_server: yes
+variables: yes
 tasks:
   sample-task:
     rss: http://example.com/example.rss
