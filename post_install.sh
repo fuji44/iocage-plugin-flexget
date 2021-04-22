@@ -9,9 +9,10 @@ sudo -u flexget python3.9 -m venv $flexget_venv_dir
 sudo -u flexget $flexget_venv_dir/bin/pip install flexget
 
 # Configure flexget
+: ${flexget_config_dir="/home/flexget/.config"}
 echo "@reboot $flexget_venv_dir/bin/flexget daemon start -d" | crontab -u flexget -
-chown -R flexget:flexget /home/flexget/.config
-chown -R flexget:flexget /home/flexget/flexget
+chown -R flexget:flexget $flexget_config_dir
+chown -R flexget:flexget $flexget_venv_dir
 
 : ${flexget_webui_password="Flex#get123"}
 sudo -u flexget $flexget_venv_dir/bin/flexget web passwd $flexget_webui_password
