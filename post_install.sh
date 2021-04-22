@@ -6,36 +6,36 @@ pw useradd flexget -s /bin/csh -m
 # Install flexget
 : ${flexget_venv_dir="/home/flexget/flexget"}
 sudo -u flexget python3.9 -m venv $flexget_venv_dir
-packages = "flexget"
+packages="flexget"
 # Option: If Use Deluge plugin
 : ${use_deluge=false}
 if "${use_deluge}"; then
-    packages = "$packages deluge-client"
+    packages="$packages deluge-client"
 fi
 # Option: If Use Transmission plugin
 : ${use_transmission=false}
 if "${use_transmission}"; then
-    packages = "$packages transmission-rpc"
+    packages="$packages transmission-rpc"
 fi
 # Option: If Use Periscope plugin
 : ${use_periscope=false}
 if "${use_periscope}"; then
-    packages = "$packages periscope"
+    packages="$packages periscope"
 fi
 # Option: If Use Subliminal plugin
 : ${use_subliminal=false}
 if "${use_subliminal}"; then
-    packages = "$packages subliminal>=2.0"
+    packages="$packages subliminal>=2.0"
 fi
 # Option: If Use Telegram plugin
 : ${use_telegram=false}
 if "${use_telegram}"; then
-    packages = "$packages python-telegram-bot==12.8"
+    packages="$packages python-telegram-bot==12.8"
 fi
 # Option: If Use XMPP plugin
 : ${use_xmpp=false}
 if "${use_xmpp}"; then
-    packages = "$packages sleekxmpp"
+    packages="$packages sleekxmpp"
 fi
 echo "pip install packages: $packages"
 sudo -u flexget $flexget_venv_dir/bin/pip install $packages
