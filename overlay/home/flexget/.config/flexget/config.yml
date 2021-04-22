@@ -1,0 +1,7 @@
+# https://flexget.com/Configuration
+web_server: yes
+tasks:
+  sample-task:
+    rss: http://example.com/example.rss
+    accept_all: yes
+    download: /tmp

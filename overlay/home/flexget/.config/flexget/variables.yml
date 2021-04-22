@@ -1,0 +1,4 @@
+# https://flexget.com/Plugins/variables
+# Defines variables that can be used in config.yml.
+# If you want to define sensitive information such as passwords and API keys, we recommend that you define them in this file.
+# *Note* Any variables you create in the WebUI are saved in the DB and not to a file.
