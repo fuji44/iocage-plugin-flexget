@@ -40,7 +40,7 @@ To execute the `flexget` command, activate the venv environment or specify the p
 
 ```
 su - flexget
-source /home/flexget/flexget/bin/activate
+source /home/flexget/flexget/bin/activate.csh
 flexget --help
 # or
 /home/flexget/flexget/bin/flexget --help
