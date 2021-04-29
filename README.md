@@ -68,6 +68,7 @@ flexget is installed in the Python venv environment. Normally you would have to 
 Please control by starting and stopping the jail.
 
 ```
+# Run on host console
 iocage start flexget
 iocage stop flexget
 iocage restart flexget
@@ -76,12 +77,12 @@ iocage restart flexget
 If you want to control only the flexget daemon without stopping the jail, run the `flexget daemon` command or the` service flexget` command.
 
 ```
-# Use flexget command. Run as flexget user
+# Use flexget command. Run as flexget user on jail console 
 flexget daemon start -d
 flexget daemon stop
 flexget daemon status
 
-# Use service command. Run as root user
+# Use service command. Run as root user on jail console 
 service flexget start
 service flexget stop
 service flexget status
@@ -91,7 +92,7 @@ service flexget restart # service command only
 ### Change the autostart setting
 
 ```
-# Run as root user
+# Run as root user on jail console 
 # Enable autostart
 sysrc flexget_enable=YES
 
