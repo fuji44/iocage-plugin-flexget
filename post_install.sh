@@ -17,6 +17,7 @@ sudo -H -u flexget $flexget_app_dir/bin/pip install flexget
 # Configure flexget
 chown -R flexget:flexget $flexget_config_dir $flexget_app_dir 
 chmod +x /usr/local/bin/flexgetget.sh /usr/local/bin/flexgetget.sh
+echo 'source $HOME/flexget/bin/activate.csh' >> /home/flexget/.cshrc
 
 : ${flexget_webui_password="Flex#get123"}
 sudo -H -u flexget $flexget_app_dir/bin/flexget web passwd $flexget_webui_password
