@@ -34,4 +34,7 @@ echo "Config dir: $flexget_config_dir" >> /root/PLUGIN_INFO
 echo "Webui password: $flexget_webui_password" >> /root/PLUGIN_INFO
 echo "" >> /root/PLUGIN_INFO
 echo "To change the password, execute the following command." >> /root/PLUGIN_INFO
+echo "# If you run it on a TrueNAS console" >> /root/PLUGIN_INFO
+echo "sudo iocage set -P passwd='new_password' your_plugin_name" >> /root/PLUGIN_INFO
+echo "# If you run it on a Jail console" >> /root/PLUGIN_INFO
 echo "$flexget_app_dir/bin/flexget web passwd new_password" >> /root/PLUGIN_INFO

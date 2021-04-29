@@ -1,0 +1,11 @@
+{
+	"servicerestart":"service flexget restart",
+	"serviceset": "/usr/local/bin/flexgetset.sh",
+	"options": {
+    "passwd": {
+      "type": "string",
+      "name": "web user password",
+      "description": "Change flexget web user password"
+    }
+	}
+}
