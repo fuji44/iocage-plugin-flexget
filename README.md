@@ -20,7 +20,6 @@ See the URL below for the Web API.
 
 http://your_ip_addr:5050/api
 
-
 ## Configure
 
 Most settings can be changed in the Web UI.
@@ -44,24 +43,24 @@ su - flexget
 flexget web passwd new_password
 ```
 
-
 ### Advanced configure
 
-If you want to make settings that cannot be done with the Web UI, you have to access the jail console and execute commands or rewrite the configuration file.
+If you want to make settings that cannot be done with the Web UI, you have to access the jail console and execute `flexget` commands or rewrite the configuration file.
 
-Since flexget is configured to run as the flexget user, use the `flexget` user to operate the console.
+#### `flexget` command
 
-configuration directory is `/home/flexget/.config/flexget`. Files such as logs, configurations and DBs can be found here.
-
-flexget is installed in `/home/flexget/flexget`.
-Use the `flexget` command to operate flexget. The command can be run as the flexget user.
+The `flexget` command must be run as the `flexget` user. See [the official docs](https://flexget.com/CLI) for more information on the command.
 
 ```
 su - flexget
 flexget --help
 ```
 
-flexget is installed in the Python venv environment. Normally you would have to activate the venv environment or specify an absolute path to run the `flexget` command, but flexget users are already configured to activate venv at login. See `$ HOME / .cshrc`
+#### config files
+
+flexget is installed in the python venv environment at `/usr/local/flexget`. Files such as logs, config and DBs can be found here.
+
+Normally you would have to activate the venv environment or specify an absolute path to run the `flexget` command, but flexget users are already configured to activate venv at login. See `$HOME/.cshrc`
 
 ## Start and stop
 
