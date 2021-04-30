@@ -12,6 +12,7 @@ pw useradd flexget -s /bin/csh -m
 
 # Install flexget
 sudo -H -u flexget /usr/local/bin/python3.9 -m venv $flexget_app_dir
+sudo -H -u flexget $flexget_app_dir/bin/python3.9 -m pip install --upgrade pip
 sudo -H -u flexget $flexget_app_dir/bin/pip install flexget
 
 # Configure flexget
