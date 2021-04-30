@@ -1,27 +1,24 @@
 #!/bin/sh
 
-: ${flexget_app_dir="/home/flexget/flexget"}
-
-sysrc -f /etc/rc.conf flexget_enable="YES"
-sysrc -f /etc/rc.conf flexget_app_dir=$flexget_app_dir
-sysrc -f /etc/rc.conf flexget_user=flexget
+# Install flexget
+: ${flexget_app_dir="/usr/local/flexget"}
+/usr/local/bin/python3.9 -m venv $flexget_app_dir
+$flexget_app_dir/bin/python3.9 -m pip install --upgrade pip
+$flexget_app_dir/bin/pip install flexget
 
 # Create run user
 pw useradd flexget -s /bin/csh -m
-
-# Install flexget
-sudo -H -u flexget /usr/local/bin/python3.9 -m venv $flexget_app_dir
-sudo -H -u flexget $flexget_app_dir/bin/python3.9 -m pip install --upgrade pip
-sudo -H -u flexget $flexget_app_dir/bin/pip install flexget
+chown -R flexget $flexget_app_dir
+echo "source $flexget_app_dir/bin/activate.csh" >> /home/flexget/.cshrc
 
 # Configure flexget
-echo 'source $HOME/flexget/bin/activate.csh' >> /home/flexget/.cshrc
-
 : ${flexget_webui_password="Flex#get123"}
-sudo -H -u flexget $flexget_app_dir/bin/flexget web passwd $flexget_webui_password
+cd $flexget_app_dir
+su -m flexget -c "$flexget_app_dir/bin/flexget web passwd $flexget_webui_password"
+sysrc -f /etc/rc.conf flexget_enable="YES"
 
 # Start flexget daemon
-sudo -H -u flexget $flexget_app_dir/bin/flexget daemon start -d
+service flexget start
 
 # Success messages
 echo "✅ flexget installation is complete!" > /root/PLUGIN_INFO

@@ -5,32 +5,24 @@
 
 . /etc/rc.subr
 
-name=flexget
-rcvar=flexget_enable
+name="flexget"
+rcvar="flexget_enable"
 load_rc_config $name
 
 : ${flexget_enable:="NO"}
-: ${flexget_app_dir:="/home/flexget/flexget"}
+: ${flexget_app_dir:="/usr/local/flexget"}
 : ${flexget_user:="flexget"}
 
-procname="${flexget_app_dir}/bin/python3.9"
-start_cmd="${name}_start"
-stop_cmd="${name}_stop"
-status_cmd="${name}_status"
+required_dirs="$flexget_app_dir"
+procname="$flexget_app_dir/bin/python3.9"
 
-flexget_start()
-{
-        /usr/local/bin/sudo -H -u ${flexget_user} ${flexget_app_dir}/bin/flexget daemon start -d
-}
-
-flexget_stop()
-{
-        /usr/local/bin/sudo -H -u ${flexget_user} ${flexget_app_dir}/bin/flexget daemon stop
-}
-
-flexget_status()
-{
-        /usr/local/bin/sudo -H -u ${flexget_user} ${flexget_app_dir}/bin/flexget daemon status
-}
+# For 'argument_cmd', '${name}_chdir' doesn't work for unknown reason.
+# It's a bit clunky, but I'm moving with 'argument_precmd'.
+start_precmd="cd $flexget_app_dir"
+stop_precmd="cd $flexget_app_dir"
+status_precmd="cd $flexget_app_dir"
+start_cmd="$flexget_app_dir/bin/flexget daemon start -d"
+stop_cmd="$flexget_app_dir/bin/flexget daemon stop"
+status_cmd="$flexget_app_dir/bin/flexget daemon status"
 
 run_rc_command "$1" 
