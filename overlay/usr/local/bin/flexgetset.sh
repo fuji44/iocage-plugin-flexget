@@ -2,7 +2,8 @@
 
 case $1 in
 	passwd)
-                sudo -H -u flexget /home/flexget/flexget/bin/flexget web passwd $2
+                cd /usr/local/flexget
+                su -m flexget -c "/home/flexget/flexget/bin/flexget web passwd $2"
                 ;;
 	*)
                 echo "Unknown option"
