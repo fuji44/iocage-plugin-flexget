@@ -15,13 +15,18 @@ load_rc_config $name
 
 required_dirs="$flexget_app_dir"
 procname="$flexget_app_dir/bin/python3.9"
+flexget_chdir="$flexget_app_dir"
+command="$flexget_app_dir/bin/flexget"
+command_args="daemon start -d"
 
 # For 'argument_cmd', '${name}_chdir' doesn't work for unknown reason.
 # It's a bit clunky, but I'm moving with 'argument_precmd'.
-start_precmd="cd $flexget_app_dir"
 stop_precmd="cd $flexget_app_dir"
 status_precmd="cd $flexget_app_dir"
-start_cmd="$flexget_app_dir/bin/flexget daemon start -d"
+
+# stop_cmd and status_cmd work fine without mentioning them,
+# but they are defined to use the flexget command.
+# However, it runs as the root user. 
 stop_cmd="$flexget_app_dir/bin/flexget daemon stop"
 status_cmd="$flexget_app_dir/bin/flexget daemon status"
 
