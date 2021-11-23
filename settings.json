@@ -6,6 +6,50 @@
       "type": "string",
       "name": "web user password",
       "description": "Change flexget web user password"
+    },
+    "enable": {
+      "type": "combo",
+      "name": "Enable plugin",
+      "description": "Set to use deluge",
+			"options": {
+					"ftp": "Use FTP",
+					"sftp": "Use SFTP",
+					"imdb": "Use IMDb",
+					"filmweb": "Use TLS",
+					"deluge": "Use deluge",
+					"periscope": "Use periscope",
+					"subtitle": "Use subtitle",
+					"transmission": "Use transmission",
+					"telegram": "Use telegram",
+					"xmpp": "Use xmpp",
+					"decompress": "Use decompress",
+					"cfscraper": "Use cfscraper",
+					"formlogin": "Use formlogin",
+					"proxy": "Use proxy",
+					"irc": "Use irc"
+			}
+    },
+    "disable": {
+      "type": "combo",
+      "name": "Disable plugin",
+      "description": "Set to use deluge",
+      "options": {
+          "ftp": "Use FTP",
+          "sftp": "Use SFTP",
+          "imdb": "Use IMDb",
+          "filmweb": "Use TLS",
+          "deluge": "Use deluge",
+          "periscope": "Use periscope",
+          "subtitle": "Use subtitle",
+          "transmission": "Use transmission",
+          "telegram": "Use telegram",
+          "xmpp": "Use xmpp",
+          "decompress": "Use decompress",
+          "cfscraper": "Use cfscraper",
+          "formlogin": "Use formlogin",
+          "proxy": "Use proxy",
+          "irc": "Use irc"
+      }
     }
 	}
 }
